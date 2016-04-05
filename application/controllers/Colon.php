@@ -1,5 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+require APPPATH.'controllers\oop\SpringRolls.php';
+require APPPATH.'controllers\oop\BeefSpringRolls.php';
+require APPPATH.'controllers\oop\PeanutCandySpringRolls.php';
 
 class Colon extends CI_Controller {
 
@@ -20,6 +23,20 @@ class Colon extends CI_Controller {
 		$this->session->set_userdata('some_name', 'some_value');
 		echo $this->session->userdata('some_name');
 		var_dump($_SESSION);
+	}
+
+	public function WhenILookTheDinnerPlate()
+	{
+		$stuffOnThePlate = [
+					new BeefSpringRolls('前三天牛肉碎片','是前三天湯汁') ,
+					new PeanutCandySpringRolls('金門帶來的花生糖','沒有醬汁')];
+
+
+		foreach($stuffOnThePlate as $SpringRollsObject)
+		{
+			echo $SpringRollsObject->getContent() .'<br/>';
+		}
+
 	}
 
 	public function set_mycookie()
